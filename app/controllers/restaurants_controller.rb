@@ -2,7 +2,11 @@ class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    if params[:locality]
+      @restaurants = Restaurant.search(params[:locality])
+    else
+      @restaurants = Restaurant.order("created_at DESC")
+    end
   end
 
   def show
@@ -46,7 +50,7 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   private
 
   def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :seat, :number_phone)
+      params.require(:restaurant).permit(:name, :description, :seat, :number_phone, :locality)
   end
 
    def set_restaurant

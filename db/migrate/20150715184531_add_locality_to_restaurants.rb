@@ -5,3 +5,5 @@ class AddLocalityToRestaurants < ActiveRecord::Migration
   end
   end
 end
+
+# migration supprimé
