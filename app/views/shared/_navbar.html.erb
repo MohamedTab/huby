@@ -10,35 +10,24 @@
       </button>
       <a class="navbar-brand" href="/">
 
-      <%= image_tag("logo.jpg", :alt => "OurLogo");%>
+      Our logo
 
       </a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right list-inline">
-        <li><div class="dropdown">
-          <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="padding-top: 34px; color: #9B9B9B; text-decoration: none;">
-            About ZATWA
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a class="hvr-underline-from-center" role="menuitem" tabindex="-1" href="about_us">About us</a></li>
-            <li role="presentation"><a class="hvr-underline-from-center" role="menuitem" tabindex="-1" href="our_vision">Our vision</a></li>
-            <li role="presentation"><a class="hvr-underline-from-center" role="menuitem" tabindex="-1" href="team">ZATWA Team</a></li>
-          </ul>
-        </div></li>
 
-        <li> Contacts</li>
-        <li> Products</li>
-        <li> Services></li>
+      <ul class="nav navbar-nav navbar-right list-inline">
+
+         <%= render 'layouts/sessions' %>
+
+
 
 
         <!-- <li>
-          <%= render 'layouts/sessions' %>
+
         </li> -->
       </ul>
-    </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>
 
