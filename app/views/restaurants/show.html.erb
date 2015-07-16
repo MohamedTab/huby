@@ -3,12 +3,17 @@
     <div class="col-xs-12 col-sm-7">
 
       <h1><%= @restaurant.name %></h1>
-      <% if @restaurant.picture.nil? %>
+
+      <% @restaurant.restaurant_pictures.each do |restaurant_picture| %>
+
+        <% if restaurant_picture.nil? %>
 
         <p> pas de photo de dispo bitch </p>
 
       <% else %>
-      <%= image_tag @restaurant.picture.url(:medium) %>
+      <%= image_tag restaurant_picture.picture(:medium) %>
+
+      <% end %>
 
       <% end %>
     </div>

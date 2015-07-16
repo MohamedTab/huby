@@ -25,11 +25,16 @@
           <%= f.label :pays %><br>
           <%= f.text_field :country, :id => "country", :class => "form-control" %>
 
-    <p>
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-    </p>
+
+
+     <label>Photos</label>
+<%= f.fields_for :restaurant_pictures do |picture| %>
+
+<%= picture.file_field :picture %>
+
+<% end %>
 
 
   <%= f.submit %>
 <% end %>
+

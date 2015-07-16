@@ -8,10 +8,10 @@
         <% @restaurants.each do |restaurant| %>
           <div class="col-xs-12 col-sm-4">
             <h2><%= link_to restaurant.name, restaurant_path(restaurant)%></h2>
-            <% if restaurant.picture == nil %>
+            <% if restaurant.restaurant_pictures.first == nil %>
               <p> pas de photo de dispo bitch </p>
             <% else %>
-              <%= image_tag restaurant.picture.url(:medium) %>
+              <%= image_tag restaurant.restaurant_pictures.first.picture(:medium) %>
             <% end %>
             <p><%= restaurant.description %></p>
               <%= link_to "Delete", restaurant_path(restaurant),
