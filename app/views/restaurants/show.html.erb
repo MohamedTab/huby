@@ -30,9 +30,24 @@
     <p> Ajoutez le premier commentaire <p>
   <% else %>
     <% reviews.each do |review| %>
-      <p> <strong> Commentaire du <%= review.created_at.to_formatted_s(:short) %> </strong> <%= link_to 'Supprimer', review, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p>
-        <div style="border: 1px solid grey; background-color: white; border-radius: 5px; padding: 15px 20px; margin-bottom: 15px;">
+      <p> <strong> Commentaire du <%= review.created_at.to_formatted_s(:short) %> </strong>
+        <p> <strong> <%= review.title %> </strong>
+        <% if review.rate == 1 %>
+          <span style="color:orange;">★</span> <span>★</span><span>★</span><span>★</span><span>★</span>
+        <% elsif review.rate == 2 %>
+          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
+        <% elsif review.rate == 3 %>
+          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
+        <% elsif review.rate == 4 %>
+          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
+        <% elsif review.rate == 5 %>
+          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
+        <% end %>
+
           <%= review.comment %>
+       <%= link_to 'Supprimer', review, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p>
+        <div style="border: 1px solid grey; background-color: white; border-radius: 5px; padding: 15px 20px; margin-bottom: 15px;">
+
         </div>
     <% end %>
   <% end %>
@@ -56,10 +71,26 @@
       <%= f.label :comment, "Nouveau message" %><br>
       <%= f.text_area :comment, :rows => 4, class: "form-control", :placeholder => 'Enter votre message...' %><br>
     </div>
+
+ <div class="rating rating2">
+    <%= f.label :rate, '★', :for => "e5" %>
+    <%= f.radio_button :rate, '5', :id => "e5"  %>
+    <%= f.label :rate, '★', :for => "e4" %>
+    <%= f.radio_button :rate, '4', :id => "e4"  %>
+    <%= f.label :rate, '★', :for => "e3" %>
+    <%= f.radio_button :rate, '3', :id => "e3"  %>
+    <%= f.label :rate, '★', :for => "e2" %>
+    <%= f.radio_button :rate, '2', :id => "e2"  %>
+    <%= f.label :rate, '★', :for => "e1" %>
+    <%= f.radio_button :rate, '1', :id => "e1"  %>
+
+  </div>
+
     <div class="actions">
       <%= f.submit "commenter", class: "btn btn-success" %>
     </div>
   <% end %>
 
 
-  <!-- FORM ADD COMMENT -->
+
+
