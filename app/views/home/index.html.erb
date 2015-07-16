@@ -5,7 +5,7 @@
 
      <%= form_tag(restaurants_path, :method => "get", class: "navbar-form", id: "search-form") do %>
         <div class="input-append">
-        <%= text_field_tag :address, params[:address], class: "form-control", placeholder: "Entrer votre ville" %>
+        <%= text_field_tag :locality, params[:locality], class: "form-control", placeholder: "Entrer votre ville" %>
         <button class="btn btn-warning" type="submit">Rechercher</button>
         </div>
         <% end %>

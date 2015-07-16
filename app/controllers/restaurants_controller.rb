@@ -2,8 +2,8 @@ class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:address]
-      @restaurants = Restaurant.search(params[:address])
+    if params[:locality]
+      @restaurants = Restaurant.search(params[:locality])
     else
       @restaurants = Restaurant.order("created_at DESC")
     end
