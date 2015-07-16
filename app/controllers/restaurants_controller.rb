@@ -2,10 +2,16 @@ class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:locality]
-      @restaurants = Restaurant.search(params[:locality])
+    if params[:address]
+      @restaurants = Restaurant.search(params[:address])
     else
       @restaurants = Restaurant.order("created_at DESC")
+    end
+
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
     end
   end
 
@@ -50,7 +56,7 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   private
 
   def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :seat, :number_phone, :locality)
+      params.require(:restaurant).permit(:name, :description, :seat, :number_phone, :address, :route, :country, :street_number, :locality)
   end
 
    def set_restaurant

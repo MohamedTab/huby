@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require_tree .
+//= require_bootsrap_sp_rockets
+//= require underscore
+//= require gmaps/google
+
+
+//= require ./autocomplete
+
