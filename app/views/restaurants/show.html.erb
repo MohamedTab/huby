@@ -22,3 +22,44 @@
 
 
 <p><%= @restaurant.description %></p>
+
+
+
+<% reviews = Review.where(restaurant_id: @restaurant.id) %>
+  <% if reviews.nil? %>
+    <p> Ajoutez le premier commentaire <p>
+  <% else %>
+    <% reviews.each do |review| %>
+      <p> <strong> Commentaire du <%= review.created_at.to_formatted_s(:short) %> </strong> <%= link_to 'Supprimer', review, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p>
+        <div style="border: 1px solid grey; background-color: white; border-radius: 5px; padding: 15px 20px; margin-bottom: 15px;">
+          <%= review.comment %>
+        </div>
+    <% end %>
+  <% end %>
+
+
+<!-- FORM ADD COMMENT -->
+
+<%= form_for(Review.new) do |f| %>
+      <div class="field">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+      </div>
+
+      <div class="field">
+      <%= f.label :title, "Votre titre" %><br>
+      <%= f.text_field :title, class: "form-control", :placeholder => 'Enter votre titre...' %><br>
+    </div>
+    <div class="field">
+      <%= f.label :comment, "Nouveau message" %><br>
+      <%= f.text_area :comment, :rows => 4, class: "form-control", :placeholder => 'Enter votre message...' %><br>
+    </div>
+    <div class="actions">
+      <%= f.submit "commenter", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+
+  <!-- FORM ADD COMMENT -->
