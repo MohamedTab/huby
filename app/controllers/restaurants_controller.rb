@@ -21,6 +21,7 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def new
     @restaurant = Restaurant.new
+     3.times { @restaurant.restaurant_pictures.build }
   end
 
   def create
@@ -56,7 +57,7 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   private
 
   def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :seat, :number_phone, :address, :route, :country, :street_number, :locality, :picture)
+      params.require(:restaurant).permit(:name, :description, :seat, :number_phone, :address, :route, :country, :street_number, :locality, restaurant_pictures_attributes: [:picture])
   end
 
    def set_restaurant
