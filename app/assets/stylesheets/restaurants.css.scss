@@ -1,3 +1,56 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.content_index_restaurant {
+  background-color: #F5F5F5;
+}
+
+.bandeau_index_restaurant {
+  padding: 5px;
+}
+
+
+.box_restaurant_index {
+  background-color: white;
+  height: 300px;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.name_restaurant_index {
+  height: 15px;
+  width: 80%;
+  padding: 0 15px;
+
+}
+
+.description_index_restaurant {
+  width: 100%;
+  padding: 10px 15px;
+  height: 50px;
+  text-align: justify;
+  font-size: 11px;
+}
+
+.effect6
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect6:before, .effect6:after
+{
+  content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
