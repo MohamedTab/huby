@@ -13,10 +13,17 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
     end
+
+    @reviews = Review.all
+
+
+
+
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+
   end
 
   def new

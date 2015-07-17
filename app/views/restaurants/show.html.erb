@@ -33,15 +33,15 @@
       <p> <strong> Commentaire du <%= review.created_at.to_formatted_s(:short) %> </strong>
         <p> <strong> <%= review.title %> </strong>
         <% if review.rate == 1 %>
-          <span style="color:orange;">★</span> <span>★</span><span>★</span><span>★</span><span>★</span>
+          <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         <% elsif review.rate == 2 %>
-          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
         <% elsif review.rate == 3 %>
-          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
         <% elsif review.rate == 4 %>
-          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
         <% elsif review.rate == 5 %>
-          <span style="color:orange;">★</span> <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
         <% end %>
 
           <%= review.comment %>

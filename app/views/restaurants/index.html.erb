@@ -27,6 +27,36 @@
                 <div class="description_index_restaurant">
                   <p><%= restaurant.description %></p>
                 </div>
+                <% rate_restaurant = [] %>
+                <% @reviews.each do |review| %>
+
+                    <% if review.restaurant_id == restaurant.id  %>
+                      <% rate_restaurant << review.rate %>
+                    <% end %>
+
+                <% end %>
+
+                <% if rate_restaurant != [] %>
+                 <% average = rate_restaurant.sum/rate_restaurant.size %>
+                <% if average == 1 %>
+                  <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <% elsif average == 2 %>
+                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
+                <% elsif average == 3 %>
+                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
+                <% elsif average == 4 %>
+                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
+                <% elsif average == 5 %>
+                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
+        <% end %>
+                <% else %>
+                  <p> soyez le premier à noter ce restaurant <p>
+                <% end %>
+
+
+
+
+
                 <!--   <%= link_to "Delete", restaurant_path(restaurant),
                       method: :delete,
                       data: { confirm: "Are you sure?" } %> -->
