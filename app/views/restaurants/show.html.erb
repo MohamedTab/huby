@@ -11,7 +11,7 @@
         <p> pas de photo de dispo bitch </p>
 
       <% else %>
-      <%= image_tag restaurant_picture.picture(:medium) %>
+      <%= image_tag restaurant_picture.picture(:banner) %>
 
       <% end %>
 
@@ -23,15 +23,40 @@
 
 <p><%= @restaurant.description %></p>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+      <% reviews = Review.where(restaurant_id: @restaurant.id) %>
+        <% if reviews.nil? %>
+          <p> Ajoutez le premier commentaire <p>
+        <% else %>
+          <% rate_restaurant = [] %>
+            <% reviews.each do |review| %>
+              <% rate_restaurant << review.rate %>
+            <% end %>
+          <% average = rate_restaurant.sum/rate_restaurant.size %>
+            <% if rate_restaurant != [] %>
+  <div style="font-size: 18px; padding-bottom: 25px">
+    <strong><%= reviews.size %> commentaires
+        <% if average == 1 %>
+          <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <% elsif average == 2 %>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
+        <% elsif average == 3 %>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
+        <% elsif average == 4 %>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
+        <% elsif average == 5 %>
+          <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
+        <% end %> </strong>
+  </div>
+      <% end %>
 
 
-<% reviews = Review.where(restaurant_id: @restaurant.id) %>
-  <% if reviews.nil? %>
-    <p> Ajoutez le premier commentaire <p>
-  <% else %>
+
     <% reviews.each do |review| %>
-      <p> <strong> Commentaire du <%= review.created_at.to_formatted_s(:short) %> </strong>
-        <p> <strong> <%= review.title %> </strong>
+      <div class="comment_box">
+        <p style="padding-bottom: 0px;  margin: 0px; font-size: 18px;"> <strong> <%= review.title %> </strong>
         <% if review.rate == 1 %>
           <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         <% elsif review.rate == 2 %>
@@ -42,15 +67,19 @@
           <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
         <% elsif review.rate == 5 %>
           <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
-        <% end %>
+        <% end %></p>
 
+        <p style="font-size: 10px;"> Avis écrit le <%= review.created_at.to_formatted_s(:short) %> </p>
+        <div class="description">
           <%= review.comment %>
-       <%= link_to 'Supprimer', review, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p>
-        <div style="border: 1px solid grey; background-color: white; border-radius: 5px; padding: 15px 20px; margin-bottom: 15px;">
-
         </div>
+          <!-- <p> <strong> Avis écrit le <%= review.created_at.to_formatted_s(:short) %> </strong>
+       <%= link_to 'Supprimer', review, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p> -->
+</div>
     <% end %>
+
   <% end %>
+
 
 
 <!-- FORM ADD COMMENT -->
@@ -90,6 +119,9 @@
       <%= f.submit "commenter", class: "btn btn-success" %>
     </div>
   <% end %>
+ </div>
+  </div>
+</div>
 
 
 
