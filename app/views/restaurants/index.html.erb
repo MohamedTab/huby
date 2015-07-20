@@ -2,11 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-7" style="padding: 0px">
+    <div class="col-xs-12 col-sm-7" style="padding: 0px;">
 
       <div class="row" style=" overflow:scroll; width:100%; height: 590px; margin:0px;">
 
-        <div class="bandeau_index_restaurant col-xs-12" style="background-color:white">
+        <div class="bandeau_index_restaurant col-xs-12" style="background-color:#2FCBCE; color: white;">
           <p><strong> Filtrer par:</strong></p>
         </div>
 
@@ -19,10 +19,16 @@
                 <% if restaurant.restaurant_pictures.first == nil %>
                   <p> pas de photo de dispo bitch </p>
                 <% else %>
+                <div class="photo_index_restaurant">
                   <%= image_tag restaurant.restaurant_pictures.first.picture(:medium) %>
+                </div>
                 <% end %>
                 <div class="name_restaurant_index">
-                   <h5> <i class="fa fa-map-marker" style="font-size: 11px;"> 1,2km </i><%= link_to restaurant.name, restaurant_path(restaurant)%></h5>
+                  <ul class="list-inline">
+                    <li> <i class="fa fa-map-marker" style="font-size: 11px;"> 1,2km </i> </li>
+                    <li><h5><strong><%= link_to restaurant.name, restaurant_path(restaurant), :style => "color: black;"%></strong></h5></li>
+                  </ul>
+
                 </div>
                 <div class="description_index_restaurant">
                   <p><%= restaurant.description %></p>
@@ -35,31 +41,32 @@
                     <% end %>
 
                 <% end %>
-
+                <div class="star_box_index_restaurant">
                 <% if rate_restaurant != [] %>
                  <% average = rate_restaurant.sum/rate_restaurant.size %>
-                <% if average == 1 %>
-                  <span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                <% elsif average == 2 %>
-                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span><span>★</span>
-                <% elsif average == 3 %>
-                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span><span>★</span>
-                <% elsif average == 4 %>
-                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span>★</span>
-                <% elsif average == 5 %>
-                  <span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span><span style="color:orange;">★</span>
-        <% end %>
+                  <% if average == 1 %>
+                    <span style="color:#1abc9c;">★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  <% elsif average == 2 %>
+                    <span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span>★</span><span>★</span><span>★</span>
+                  <% elsif average == 3 %>
+                    <span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span>★</span><span>★</span>
+                  <% elsif average == 4 %>
+                    <span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span>★</span>
+                  <% elsif average == 5 %>
+                    <span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span><span style="color:#1abc9c;">★</span>
+                  <% end %>
                 <% else %>
-                  <p> soyez le premier à noter ce restaurant <p>
+
                 <% end %>
+                </div>
 
 
 
 
 
-                <!--   <%= link_to "Delete", restaurant_path(restaurant),
+               <%= link_to "Delete", restaurant_path(restaurant),
                       method: :delete,
-                      data: { confirm: "Are you sure?" } %> -->
+                      data: { confirm: "Are you sure?" } %>
               </div>
 
             </div>

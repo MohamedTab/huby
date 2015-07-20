@@ -1,6 +1,8 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :user
   has_many :restaurant_pictures, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
+
 
   accepts_nested_attributes_for :restaurant_pictures
 
