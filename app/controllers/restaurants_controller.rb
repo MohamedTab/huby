@@ -20,6 +20,8 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @menu = Menu.new
+
 
   end
 

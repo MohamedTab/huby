@@ -2,7 +2,11 @@
 
 test
 
+<%= link_to "add new restaurant", new_restaurant_path %>
 
+<% @restaurants.each do |restaurant| %>
+<%= restaurant.name %>
+<% end %>
 
 <% else %>
 

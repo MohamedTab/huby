@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @restaurants = Restaurant.where(:user_id => params[:id])
 
   end
 

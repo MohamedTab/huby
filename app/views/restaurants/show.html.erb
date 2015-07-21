@@ -129,3 +129,25 @@
 
 
 
+          <% menu = Menu.new(restaurant_id: @restaurant.id) %>
+
+
+            <%= form_for([@restaurant, menu]) do |f| %>
+
+
+            <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+
+
+
+
+
+            <%= f.submit "Add menu", :class => 'btn btn-link' %>
+
+
+            <% end %>
+          </div>
+
+
+
+
+
