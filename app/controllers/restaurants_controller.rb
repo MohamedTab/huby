@@ -21,6 +21,8 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   def show
     @restaurant = Restaurant.find(params[:id])
     @menu = Menu.new
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant_coordinates = { lat: @restaurant.lat, lng: @restaurant.lng }
 
 
   end

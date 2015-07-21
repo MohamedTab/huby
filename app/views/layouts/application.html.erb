@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,400,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <p class="notice"><%= notice %></p>
@@ -36,7 +37,9 @@ src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyA4KY
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
 
   <%= javascript_include_tag "application" %>
-
   <%= yield(:after_js) %>
+  <script type="text/javascript" src="autocomplete.js"></script>
+
+
 </body>
 </html>
