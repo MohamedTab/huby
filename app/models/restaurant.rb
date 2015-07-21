@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :user
+  has_many :menus
   has_many :restaurant_pictures, :dependent => :destroy
   has_many :reviews, :dependent => :destroy
 

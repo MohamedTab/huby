@@ -16,13 +16,12 @@ before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
     @reviews = Review.all
 
-
-
-
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @menu = Menu.new
+
 
   end
 
